@@ -30,15 +30,16 @@ io.on("connection", (socket) => {
     socket.emit("joinedusers", users_byid);
   });
 
-  socket.on("sendmessage", ({receiver_id, message_text}) => {
+  socket.on("sendmessage", ({receiver_id, message_text, message_id}) => {
     //* create user
     // ct_users.push({id:socket.id, user_id: uid, user_email: email});
     const selfIndex = ct_users.findIndex((e_user) => e_user.id === socket.id);
-    console.log('Sender', ct_users[selfIndex]);
+    console.log('Sender', ct_users[selfIndex], message_id);
     socket.emit("message", {
       sender: {id:ct_users[selfIndex].user_id},
       createdAt: new Date().toString(),
       message: message_text,
+      message_id : message_id
     });
     const index = ct_users.findIndex((e_user) => e_user.user_id === receiver_id);
     if(users_byid[receiver_id]){
