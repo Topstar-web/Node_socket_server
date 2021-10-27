@@ -48,6 +48,7 @@ io.on("connection", (socket) => {
         sender: {id:ct_users[selfIndex].user_id},
         createdAt: new Date().toString(),
         message: message_text,
+        message_id:message_id
       });
     }
 
