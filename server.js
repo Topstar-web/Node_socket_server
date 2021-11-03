@@ -122,7 +122,7 @@ io.on("connection", (socket) => {
       console.log(ct_users, 'disconnected');
     });
   });
-const PORT = process.env.PORT || 7131;
+const PORT = process.env.PORT || 8080;
 server.listen(PORT, err => {
     if(err) throw err;
     console.log("Server running: PORT:" + PORT);
